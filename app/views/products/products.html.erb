@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Listing Products</title>
+	<style type="text/css">
+	#wrapper{
+		padding: 20px;
+	}	
+	table{
+	border-collapse: collapse;
+	width: 600px;
+	}
+	tr,td,th{
+	border: 2px solid black;
+	}
+	.head{
+	background-color: #B6B9BA;
+	}
+	</style>
+	
+</head>
+<body>
+<div id="wrapper">
+<h1>Listing Products</h1>
+
+<table>
+	<tr class="head">
+		<th>Name</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Category</th>
+		<th></th>
+	</tr>
+	<% if @list != nil%>
+	<% @list.each do |list| %>
+	<tr>
+		<td><%= list.name %></td>
+		<td><%= list.description %></td>
+		<td>$ <%= list.pricing %></td>
+		<td><%= list.category_name%></td>
+		<td><a href="/products/<%= list.id %>"> Show</a> | <a href="/products/<%= list.id %>/edit">Edit</a> | <a href="/destroy/<%= list.id %>">Destroy</a> </td>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+<br>
+<a href="/products/new">New Product</a>
+</div>
+</body>
+</html>

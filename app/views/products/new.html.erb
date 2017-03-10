@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Product</title>
+	<style type="text/css">
+	#wrapper{
+		padding: 20px;
+	}	
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<h1>New Product</h1>
+<form method="post" action="/create">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<p>Category: 
+
+<select name="category">
+<option disabled selected>Pick category</option>
+<% @category.each do |x| %>
+	<option value="<%= x.id%>"><%= x.name%></option>
+	<% end %>
+</select>
+
+</p>
+<p>Name: <input type="text" id="name" name="name"></p>
+<p>Description: <input type="text" id="description" name="description"></p>
+<p>Pricing: <input type="text" id="pricing" name="pricing"></p>
+<p><input type="submit" id="btn_add" value="Create!!" ></p>	
+</form>
+<a href="/products">Back</a><br>
+<% if flash[:message] != nil %>
+	<p><%= flash[:message] %></p>
+
+<% end %>
+</div>
+</body>
+</html>

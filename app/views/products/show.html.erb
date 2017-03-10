@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show</title>
+	<style type="text/css">
+	#wrapper{
+		padding: 20px;
+	}	
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<% if @detail != nil %>
+<div>
+	<p><strong>Name:</strong> <%= @detail.name %></p>
+	<p><strong>Description:</strong> <%= @detail.description %></p>
+	<p><strong>Price:</strong> $ <%= @detail.pricing%></p>
+	<p><strong>Categoty:</strong> <%= @detail.category_name%></p>
+	<br>
+	<p><a href="/products/<%= @detail.id %>/edit">Edit</a> | <a href="/products"> Back</a></p>
+</div>
+<% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Editing Product</title>
+	<style type="text/css">
+	#wrapper{
+		padding: 20px;
+	}	
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<h1>Editing Product</h1>
+<form method="post" action="/update/<%= @edit.id %>">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<p>Category: 
+
+<select name="category">
+<option value="<%= @edit.category_id %>" selected><%= @edit.category_name %></option>
+<% @category.each do |x| %>
+<option value="<%= x.id%>"><%= x.name%></option>
+<% end %>
+</select>
+
+</p>
+<p>Name: <input type="text" id="name" name="name" value="<%= @edit.name %>"></p>
+<p>Description: <input type="text" id="description" name="description" value="<%= @edit.description %>"></p>
+<p>Price: $ <input type="text" id="pricing" name="pricing" value="<%= @edit.pricing %>"></p>
+<p><input type="submit" id="btn_update" value="Update" ></p>	
+</form>
+<p><a href="">Show</a> | <a href="/products">Back</a></p>
+<% if flash[:message] != nil %>
+	<%= flash[:message] %>
+<% end %>
+</div>
+</body>
+</html>
